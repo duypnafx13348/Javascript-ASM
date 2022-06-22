@@ -30,6 +30,28 @@
             color: red;
         }
     </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Class Marksheet</h1>
+        <p>Họ tên : <input type="text" id="name"/></p>
+        <p>Điểm toán : <input type="text" id="math" /></p>
+        <p>Điểm lý : <input type="text" id="physical" /></p>
+        <p>Điểm hóa : <input type="text" id="chemistry" /></p>
+        <button id="nhapdiem">Nhập</button></br></br>
+        <table id="myTable">
+            <tr>
+                <th>STT</th>
+                <th>Họ tên</th>
+                <th>Toán</th>
+                <th>Lý</th>
+                <th>Hóa</th>
+                <th>Trung bình</th>
+            </tr>
+        </table></br>
+        <button id="tinhdiem">Tính điểm trung bình</button>
+        <button id="hsgioi">Xác định học sinh giỏi</button>
+    </div>
     <script>
         var i = 0;
         $(document).ready(function() {
@@ -86,27 +108,5 @@
         });
     });
     </script>
-</head>
-<body>
-    <div class="container">
-        <h1>Class Marksheet</h1>
-        <p>Họ tên : <input type="text" id="name"/></p>
-        <p>Điểm toán : <input type="text" id="math" /></p>
-        <p>Điểm lý : <input type="text" id="physical" /></p>
-        <p>Điểm hóa : <input type="text" id="chemistry" /></p>
-        <button id="nhapdiem">Nhập</button></br></br>
-        <table id="myTable">
-            <tr>
-                <th>STT</th>
-                <th>Họ tên</th>
-                <th>Toán</th>
-                <th>Lý</th>
-                <th>Hóa</th>
-                <th>Trung bình</th>
-            </tr>
-        </table></br>
-        <button id="tinhdiem">Tính điểm trung bình</button>
-        <button id="hsgioi">Xác định học sinh giỏi</button>
-    </div>
 </body>
 </html>
