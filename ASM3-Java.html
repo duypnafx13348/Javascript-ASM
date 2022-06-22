@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASM3-Java</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 3px 30px;
+        }
+        .red {
+            color: red;
+        }
+    </style>
+    <script>
+        var i = 0;
+        $(document).ready(function() {
+            $("#nhapdiem").click(function() {
+                var hoten = $("#name").val();
+                var toan = $("#math").val();
+                var ly = $("#physical").val();
+                var hoa = $("#chemistry").val();
+                $("#name").val("");
+                $("#math").val("");
+                $("#physical").val("");
+                $("#chemistry").val("");
+                ++i;
+                var table = document.getElementById("myTable");
+                var row = table.insertRow(i);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                cell1.innerHTML = i;
+                cell2.innerHTML = hoten;
+                cell3.innerHTML = toan;
+                cell4.innerHTML = ly;
+                cell5.innerHTML = hoa;
+                cell6.innerHTML = "?";
+        });
+        // Tính điểm trung bình
+            $("#tinhdiem").click(function() {
+                $("table tr:gt(0)").each(function() {
+                    // Cách 1
+                    /*var x = this.cells[2].innerHTML;
+                    var y = this.cells[3].innerHTML;
+                    var z = this.cells[4].innerHTML;
+                    var trungbinh = ((parseFloat(x) + parseFloat(y) + parseFloat(z)) / 3).toFixed(1);
+                   this.cells[5].innerHTML = trungbinh;*/
+                   // Cách 2
+                   var x = $(this).find("td:eq(2)").text();
+                   var y = $(this).find("td:eq(3)").text();
+                   var z = $(this).find("td:eq(4)").text();
+                    var trungbinh = ((parseFloat(x) + parseFloat(y) + parseFloat(z)) / 3).toFixed(1);
+                    $(this).find("td:eq(5)").text(trungbinh);
+                });
+            });
+        // Xác định học sinh giỏi
+            $("#hsgioi").click(function() {
+                $("#myTable tr:gt(0)").each(function() {
+                    var gioi = parseFloat($(this).find("td:eq(5)").text());
+                    if (gioi >= 8) {
+                        $(this).addClass("red");
+                    };
+                });
+        });
+    });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Class Marksheet</h1>
+        <p>Họ tên : <input type="text" id="name"/></p>
+        <p>Điểm toán : <input type="text" id="math" /></p>
+        <p>Điểm lý : <input type="text" id="physical" /></p>
+        <p>Điểm hóa : <input type="text" id="chemistry" /></p>
+        <button id="nhapdiem">Nhập</button></br></br>
+        <table id="myTable">
+            <tr>
+                <th>STT</th>
+                <th>Họ tên</th>
+                <th>Toán</th>
+                <th>Lý</th>
+                <th>Hóa</th>
+                <th>Trung bình</th>
+            </tr>
+        </table></br>
+        <button id="tinhdiem">Tính điểm trung bình</button>
+        <button id="hsgioi">Xác định học sinh giỏi</button>
+    </div>
+</body>
+</html>
